@@ -39,4 +39,13 @@ describe("FacebookAuthenticationService", () => {
 
     expect(authResult).toEqual(new AuthenticationError());
   });
+
+  it("should call LoadUserAccountRepo when LoadFacebookUserApi returns data", async () => {
+    await sut.perform({ token });
+
+    expect(loadUserAccountRepo.load).toHaveBeenCalledWith({
+      email: "any_fb_email",
+    });
+    expect(loadUserAccountRepo.load).toHaveBeenCalledTimes(1);
+  });
 });
