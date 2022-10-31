@@ -54,4 +54,19 @@ describe("FacebookAuthenticationService", () => {
     });
     expect(loadUserAccountRepo.load).toHaveBeenCalledTimes(1);
   });
+
+  it("should call CreateUserAccountRepo when LoadUserAccountRepo returns undefined", async () => {
+    loadUserAccountRepo.load.mockResolvedValueOnce(undefined);
+
+    await sut.perform({ token });
+
+    expect(createFacebookAccountRepo.createFromFacebook).toHaveBeenCalledWith({
+      email: "any_fb_email",
+      name: "any_fb_name",
+      facebookId: "any_fb_id",
+    });
+    expect(createFacebookAccountRepo.createFromFacebook).toHaveBeenCalledTimes(
+      1
+    );
+  });
 });
