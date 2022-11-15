@@ -1,5 +1,9 @@
 module.exports = {
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.ts',
+    '!<rootDir>/src/main/**',
+    '!<rootDir>/src/**/index.ts'
+  ],
   coverageDirectory: 'coverage',
   coverageProvider: 'babel',
   moduleNameMapper: {
@@ -12,5 +16,6 @@ module.exports = {
   ],
   transform: {
     '\\.ts$': 'ts-jest'
-  }
+  },
+  clearMocks: true
 }
