@@ -21,7 +21,9 @@
         "../tests/*"
       ]
     },
-    "strict": true
+    "strict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": [
     "src",
