@@ -9,6 +9,7 @@ import { getRepository } from "typeorm";
 type LoadParams = LoadUserAccountRepository.Params;
 type LoadResult = LoadUserAccountRepository.Result;
 type SaveParams = SaveFacebookAccountRepository.Params;
+type SaveResult = SaveFacebookAccountRepository.Result;
 
 export class PgUserAccountRepository implements LoadUserAccountRepository {
   private readonly pgUserRepo = getRepository(PgUser);
@@ -23,14 +24,17 @@ export class PgUserAccountRepository implements LoadUserAccountRepository {
     }
   }
 
-  async saveWithFacebook(params: SaveParams): Promise<void> {
+  async saveWithFacebook(params: SaveParams): Promise<SaveResult> {
+    let id: string;
     if (params.id === undefined) {
-      await this.pgUserRepo.save({
+      const pgUser = await this.pgUserRepo.save({
         email: params.email,
         name: params.name,
         facebookId: params.facebookId,
       });
+      id = pgUser.id.toString();
     } else {
+      id = params.id;
       await this.pgUserRepo.update(
         {
           id: parseInt(params.id),
@@ -41,5 +45,6 @@ export class PgUserAccountRepository implements LoadUserAccountRepository {
         }
       );
     }
+    return { id };
   }
 }
