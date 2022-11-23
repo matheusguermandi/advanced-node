@@ -2,7 +2,11 @@ import { AuthenticationError } from "@/domain/errors";
 import { FacebookAuthentication } from "@/domain/features";
 import { AccessToken } from "@/domain/models";
 import { FacebookLoginController } from "@/application/controllers";
-import { RequiredFieldError, ServerError } from "@/application/errors";
+import {
+  RequiredFieldError,
+  ServerError,
+  UnauthorizedError,
+} from "@/application/errors";
 
 import { mock, MockProxy } from "jest-mock-extended";
 
@@ -29,7 +33,7 @@ describe("FacebookLoginController", () => {
   });
 
   it("should return 400 if token is null", async () => {
-    const httpResponse = await sut.handle({ token: null });
+    const httpResponse = await sut.handle({ token: null as any });
 
     expect(httpResponse).toEqual({
       statusCode: 400,
@@ -38,7 +42,7 @@ describe("FacebookLoginController", () => {
   });
 
   it("should return 400 if token is undefined", async () => {
-    const httpResponse = await sut.handle({ token: undefined });
+    const httpResponse = await sut.handle({ token: undefined as any });
 
     expect(httpResponse).toEqual({
       statusCode: 400,
@@ -59,7 +63,7 @@ describe("FacebookLoginController", () => {
 
     expect(httpResponse).toEqual({
       statusCode: 401,
-      data: new AuthenticationError(),
+      data: new UnauthorizedError(),
     });
   });
 
