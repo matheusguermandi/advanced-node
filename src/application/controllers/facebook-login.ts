@@ -3,6 +3,7 @@ import {
   HttpResponse,
   serverError,
   unauthorized,
+  ok,
 } from "@/application/helpers";
 import { RequiredFieldError } from "@/application/errors";
 import { FacebookAuthentication } from "@/domain/features";
@@ -26,12 +27,9 @@ export class FacebookLoginController {
         token: httpRequest.token,
       });
       if (accessToken instanceof AccessToken) {
-        return {
-          statusCode: 200,
-          data: {
-            accessToken: accessToken.value,
-          },
-        };
+        return ok({
+          accessToken: accessToken.value,
+        });
       } else {
         return unauthorized();
       }
