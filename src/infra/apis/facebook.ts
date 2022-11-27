@@ -29,23 +29,16 @@ export class FacebookApi implements LoadFacebookUserApi {
   async loadUser(
     params: LoadFacebookUserApi.Params
   ): Promise<LoadFacebookUserApi.Result> {
-    const userInfo = await this.getUserInfo(params.token);
-    return {
-      facebookId: userInfo.id,
-      name: userInfo.name,
-      email: userInfo.email,
-    };
-  }
-
-  private async getUserInfo(clientToken: string): Promise<UserInfo> {
-    const debugToken = await this.getDebugToken(clientToken);
-    return this.httpClient.get({
-      url: `${this.baseUrl}/${debugToken.data.user_id}`,
-      params: {
-        fields: ["id", "name", "email"].join(","),
-        access_token: clientToken,
-      },
-    });
+    try {
+      const userInfo = await this.getUserInfo(params.token);
+      return {
+        facebookId: userInfo.id,
+        name: userInfo.name,
+        email: userInfo.email,
+      };
+    } catch {
+      return undefined;
+    }
   }
 
   private async getAppToken(): Promise<AppToken> {
@@ -66,6 +59,17 @@ export class FacebookApi implements LoadFacebookUserApi {
       params: {
         access_token: appToken.access_token,
         input_token: clientToken,
+      },
+    });
+  }
+
+  private async getUserInfo(clientToken: string): Promise<UserInfo> {
+    const debugToken = await this.getDebugToken(clientToken);
+    return this.httpClient.get({
+      url: `${this.baseUrl}/${debugToken.data.user_id}`,
+      params: {
+        fields: ["id", "name", "email"].join(","),
+        access_token: clientToken,
       },
     });
   }
