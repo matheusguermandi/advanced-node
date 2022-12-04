@@ -5,11 +5,14 @@ import {
   SaveFacebookAccountRepository,
 } from "@/domain/contracts/repos";
 import {
+  AccessToken,
+  FacebookAccount,
+  AuthenticationError,
+} from "@/domain/entities";
+import {
   setupFacebookAuthentication,
   FacebookAuthentication,
 } from "@/domain/use-cases";
-import { AuthenticationError } from "@/domain/entities/errors";
-import { AccessToken, FacebookAccount } from "@/domain/entities";
 
 import { mocked } from "ts-jest/utils";
 import { mock, MockProxy } from "jest-mock-extended";
