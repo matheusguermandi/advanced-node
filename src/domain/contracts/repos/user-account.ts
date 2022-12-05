@@ -5,9 +5,7 @@ export interface LoadUserAccountRepository {
 }
 
 export namespace LoadUserAccountRepository {
-  export type Params = {
-    email: string;
-  };
+  export type Params = { email: string };
 
   export type Result =
     | undefined
