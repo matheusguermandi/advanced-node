@@ -29,12 +29,33 @@ O objetivo do projeto é montar uma API com uma arquitetura bem definida e desac
 - Builder
 - Template Method
 - Singleton
+- Chain of Responsibility
+- Proxy
+
+> ## Code Smells (Anti-Patterns)
+
+- Blank Lines
+- Comments
+- Data Clumps
+- Divergent Change
+- Duplicate Code
+- Inappropriate Intimacy
+- Feature Envy
+- Large Class
+- Long Method
+- Long Parameter List
+- Middle Man
+- Primitive Obsession
+- Refused Bequest
+- Shotgun Surgery
+- Speculative Generality
 
 > ## Metodologias e Designs
 
 - TDD
 - Clean Architecture
 - DDD
+- Refactoring
 - GitFlow
 - Modular Design
 - Dependency Diagrams
