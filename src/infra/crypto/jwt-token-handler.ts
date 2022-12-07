@@ -8,14 +8,14 @@ export class JwtTokenHandler implements TokenGenerator, TokenValidator {
   async generateToken({
     expirationInMs,
     key,
-  }: TokenGenerator.Params): Promise<TokenGenerator.Result> {
+  }: TokenGenerator.Input): Promise<TokenGenerator.Output> {
     const expirationInSeconds = expirationInMs / 1000;
     return sign({ key }, this.secret, { expiresIn: expirationInSeconds });
   }
 
   async validateToken({
     token,
-  }: TokenValidator.Params): Promise<TokenValidator.Result> {
+  }: TokenValidator.Input): Promise<TokenValidator.Output> {
     const payload = verify(token, this.secret) as JwtPayload;
     return payload.key;
   }

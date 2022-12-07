@@ -1,14 +1,14 @@
 /* eslint-disable  */
 export interface LoadFacebookUserApi {
   loadUser: (
-    params: LoadFacebookUserApi.Params
-  ) => Promise<LoadFacebookUserApi.Result>;
+    input: LoadFacebookUserApi.Input
+  ) => Promise<LoadFacebookUserApi.Output>;
 }
 
 export namespace LoadFacebookUserApi {
-  export type Params = { token: string };
+  export type Input = { token: string };
 
-  export type Result =
+  export type Output =
     | undefined
     | {
         facebookId: string;

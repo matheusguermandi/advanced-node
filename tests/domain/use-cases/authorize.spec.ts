@@ -18,7 +18,7 @@ describe("Authorize", () => {
     sut = setupAuthorize(crypto);
   });
 
-  it("should call TokenValidator with correct Input", async () => {
+  it("should call TokenValidator with correct input", async () => {
     await sut({ token });
 
     expect(crypto.validateToken).toHaveBeenCalledWith({ token });
