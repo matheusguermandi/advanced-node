@@ -12,6 +12,6 @@ export const adaptExpressMiddleware: Adapter =
       req.locals = { ...req.locals, ...Object.fromEntries(entries) };
       next();
     } else {
-      res.status(statusCode).json(data);
+      res.status(statusCode).json({ error: data.message });
     }
   };

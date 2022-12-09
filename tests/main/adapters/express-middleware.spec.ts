@@ -5,7 +5,7 @@ import { getMockReq, getMockRes } from "@jest-mock/express";
 import { NextFunction, Request, Response, RequestHandler } from "express";
 import { mock, MockProxy } from "jest-mock-extended";
 
-describe("ExpressMidleware", () => {
+describe("ExpressMiddleware", () => {
   let req: Request;
   let res: Response;
   let next: NextFunction;
@@ -51,7 +51,7 @@ describe("ExpressMidleware", () => {
   it("should respond with correct error and statusCode", async () => {
     middleware.handle.mockResolvedValueOnce({
       statusCode: 500,
-      data: { error: "any_error" },
+      data: new Error("any_error"),
     });
 
     await sut(req, res, next);
