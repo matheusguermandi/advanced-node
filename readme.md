@@ -68,11 +68,14 @@ O objetivo do projeto é montar uma API com uma arquitetura bem definida e desac
 - Typescript
 - Git
 - Jest
+- Ts-Jest
+- Jest-Mock-Extended
 - TypeORM
 - Axios
 - Postgres
 - JsonWebToken
 - Express
+- Cors
 - Supertest
 - Husky
 - Lint Staged
@@ -82,6 +85,10 @@ O objetivo do projeto é montar uma API com uma arquitetura bem definida e desac
 - In-Memory Postgres Server
 - Module-Alias
 - Npm Check
+- Travis CI
+- Coverals
+- DotEnv
+- Ts-Node-Dev
 
 > ## Features do Typescript
 
