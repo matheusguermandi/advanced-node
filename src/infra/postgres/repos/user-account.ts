@@ -1,18 +1,15 @@
 import { PgUser } from "@/infra/postgres/entities";
-import {
-  LoadUserAccountRepository,
-  SaveFacebookAccountRepository,
-} from "@/domain/contracts/repos";
+import { LoadUserAccount, SaveFacebookAccount } from "@/domain/contracts/repos";
 
 import { getRepository } from "typeorm";
 
-type LoadInput = LoadUserAccountRepository.Input;
-type LoadOutput = LoadUserAccountRepository.Output;
-type SaveInput = SaveFacebookAccountRepository.Input;
-type SaveOutput = SaveFacebookAccountRepository.Output;
+type LoadInput = LoadUserAccount.Input;
+type LoadOutput = LoadUserAccount.Output;
+type SaveInput = SaveFacebookAccount.Input;
+type SaveOutput = SaveFacebookAccount.Output;
 
 export class PgUserAccountRepository
-  implements LoadUserAccountRepository, SaveFacebookAccountRepository
+  implements LoadUserAccount, SaveFacebookAccount
 {
   async load({ email }: LoadInput): Promise<LoadOutput> {
     const pgUserRepo = getRepository(PgUser);

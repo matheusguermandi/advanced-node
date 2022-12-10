@@ -1,11 +1,9 @@
 /* eslint-disable  */
-export interface LoadFacebookUserApi {
-  loadUser: (
-    input: LoadFacebookUserApi.Input
-  ) => Promise<LoadFacebookUserApi.Output>;
+export interface LoadFacebookUser {
+  loadUser: (input: LoadFacebookUser.Input) => Promise<LoadFacebookUser.Output>;
 }
 
-export namespace LoadFacebookUserApi {
+export namespace LoadFacebookUser {
   export type Input = { token: string };
 
   export type Output =
