@@ -47,6 +47,7 @@ describe("ChangeProfilePicture", () => {
 
     expect(userProfileRepo.savePicture).toHaveBeenCalledWith({
       pictureUrl: "any_url",
+      initials: undefined,
     });
     expect(userProfileRepo.savePicture).toHaveBeenCalledTimes(1);
   });
