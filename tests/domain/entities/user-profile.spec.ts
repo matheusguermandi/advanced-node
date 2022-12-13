@@ -28,22 +28,22 @@ describe("UserProfile", () => {
   });
 
   it("should create initials with first letter of first and last names", () => {
-    sut.setPicture({ name: "rodrigo da silva manguinho" });
+    sut.setPicture({ name: "nome" });
 
     expect(sut).toEqual({
       id: "any_id",
       pictureUrl: undefined,
-      initials: "RM",
+      initials: "NO",
     });
   });
 
   it("should create initials with first two letters of first name", () => {
-    sut.setPicture({ name: "rodrigo" });
+    sut.setPicture({ name: "nome test" });
 
     expect(sut).toEqual({
       id: "any_id",
       pictureUrl: undefined,
-      initials: "RO",
+      initials: "NT",
     });
   });
 
@@ -59,6 +59,16 @@ describe("UserProfile", () => {
 
   it("should create with empty initials when name and pictureUrl are not provided", () => {
     sut.setPicture({});
+
+    expect(sut).toEqual({
+      id: "any_id",
+      pictureUrl: undefined,
+      initials: undefined,
+    });
+  });
+
+  it("should create with empty initials when name and pictureUrl are not provided", () => {
+    sut.setPicture({ name: "" });
 
     expect(sut).toEqual({
       id: "any_id",
