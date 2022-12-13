@@ -28,22 +28,22 @@ describe("UserProfile", () => {
   });
 
   it("should create initials with first letter of first and last names", () => {
-    sut.setPicture({ name: "nome" });
+    sut.setPicture({ name: "Name" });
 
     expect(sut).toEqual({
       id: "any_id",
       pictureUrl: undefined,
-      initials: "NO",
+      initials: "NA",
     });
   });
 
   it("should create initials with first two letters of first name", () => {
-    sut.setPicture({ name: "nome test" });
+    sut.setPicture({ name: "First Name" });
 
     expect(sut).toEqual({
       id: "any_id",
       pictureUrl: undefined,
-      initials: "NT",
+      initials: "FN",
     });
   });
 

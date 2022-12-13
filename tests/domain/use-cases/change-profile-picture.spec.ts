@@ -31,7 +31,7 @@ describe("ChangeProfilePicture", () => {
     crypto = mock();
     userProfileRepo = mock();
     userProfileRepo.load.mockResolvedValue({
-      name: "Rodrigo da Silva Manguinho",
+      name: "First Name",
     });
     crypto.uuid.mockReturnValue(uuid);
   });
