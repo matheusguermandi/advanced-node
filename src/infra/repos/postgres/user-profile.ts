@@ -3,7 +3,7 @@ import { LoadUserProfile, SaveUserPicture } from "@/domain/contracts/repos";
 
 import { getRepository } from "typeorm";
 
-export class PgUserProfileRepository implements SaveUserPicture {
+export class PgUserProfileRepository implements SaveUserPicture, LoadUserProfile {
   async savePicture({
     id,
     pictureUrl,
