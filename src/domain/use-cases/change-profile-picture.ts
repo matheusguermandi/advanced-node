@@ -26,7 +26,7 @@ export const setupChangeProfilePicture: Setup =
           : undefined,
       name:
         file === undefined
-          ? (await userProfileRepo.load({ id })).name
+          ? (await userProfileRepo.load({ id }))?.name
           : undefined,
     };
     const userProfile = new UserProfile(id);
