@@ -71,6 +71,8 @@ O objetivo do projeto é montar uma API com uma arquitetura bem definida e desac
 - Ts-Jest
 - Jest-Mock-Extended
 - TypeORM
+- Aws-Sdk
+- UUID
 - Axios
 - Postgres
 - JsonWebToken
