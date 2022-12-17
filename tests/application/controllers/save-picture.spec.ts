@@ -15,15 +15,15 @@ class SavePictureController {
       return badRequest(new RequiredFieldError("file"));
     }
     if (!["image/png", "image/jpg", "image/jpeg"].includes(file.mimeType)) {
-      return badRequest(new InvalidMymeTypeError(["png", "jpeg"]));
+      return badRequest(new InvalidMimeTypeError(["png", "jpeg"]));
     }
   }
 }
 
-class InvalidMymeTypeError extends Error {
+class InvalidMimeTypeError extends Error {
   constructor(allowed: string[]) {
     super(`Unsupported file. Allowed extensions: ${allowed.join(", ")}`);
-    this.name = "InvalidMymeTypeError";
+    this.name = "InvalidMimeTypeError";
   }
 }
 
@@ -77,7 +77,7 @@ describe("SavePictureController", () => {
 
     expect(httpResponse).toEqual({
       statusCode: 400,
-      data: new InvalidMymeTypeError(["png", "jpeg"]),
+      data: new InvalidMimeTypeError(["png", "jpeg"]),
     });
   });
 
@@ -88,7 +88,7 @@ describe("SavePictureController", () => {
 
     expect(httpResponse).not.toEqual({
       statusCode: 400,
-      data: new InvalidMymeTypeError(["png", "jpeg"]),
+      data: new InvalidMimeTypeError(["png", "jpeg"]),
     });
   });
 
@@ -99,7 +99,7 @@ describe("SavePictureController", () => {
 
     expect(httpResponse).not.toEqual({
       statusCode: 400,
-      data: new InvalidMymeTypeError(["png", "jpeg"]),
+      data: new InvalidMimeTypeError(["png", "jpeg"]),
     });
   });
 
@@ -110,7 +110,7 @@ describe("SavePictureController", () => {
 
     expect(httpResponse).not.toEqual({
       statusCode: 400,
-      data: new InvalidMymeTypeError(["png", "jpeg"]),
+      data: new InvalidMimeTypeError(["png", "jpeg"]),
     });
   });
 });
