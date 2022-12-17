@@ -1,3 +1,4 @@
+import { Controller } from "@/application/controllers/controller";
 import {
   MaxFileSizeError,
   RequiredFieldError,
@@ -12,10 +13,15 @@ type HttpRequest = {
 };
 type Model = Error | { initials?: string; pictureUrl?: string };
 
-export class SavePictureController {
-  constructor(private readonly changeProfilePicture: ChangeProfilePicture) {}
+export class SavePictureController extends Controller {
+  constructor(private readonly changeProfilePicture: ChangeProfilePicture) {
+    super();
+  }
 
-  async handle({ file, userId }: HttpRequest): Promise<HttpResponse<Model>> {
+  override async perform({
+    file,
+    userId,
+  }: HttpRequest): Promise<HttpResponse<Model>> {
     if (file === undefined || file === null) {
       return badRequest(new RequiredFieldError("file"));
     }
