@@ -1,4 +1,4 @@
-import { Controller } from "@/application/controllers/controller";
+import { Controller } from "@/application/controllers";
 import {
   MaxFileSizeError,
   RequiredFieldError,
