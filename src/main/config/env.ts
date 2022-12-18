@@ -7,6 +7,11 @@ export const env = {
       process.env.FB_ACCESS_TOKEN ??
       "EAADn7ZCAAep0BAC1nu5NtvNtzEHt5lUbZC8RSpOjp1dmZArJdHWStRfIhGG5OTPXLz1dZCPs3lADAghqhrruZB2NVX2cXm1ZCNMDITH75F6HYdcmuzp84oWwo1O7ZC84AvBuHzEDxPivsc0fYWupGoyDwfCZAWPUd3MedFp4AADpQUUHQq4TTXVeK6pktPicTxhdi114NScAzwRN5vnrGqmK",
   },
+  s3: {
+    accessKey: process.env.AWS_S3_ACCESS_KEY ?? "",
+    secret: process.env.AWS_S3_SECRET ?? "",
+    bucket: process.env.AWS_S3_BUCKET ?? "",
+  },
   port: process.env.PORT ?? 8080,
   jwtSecret: process.env.JWT_SECRET ?? "3jk24h32jk4h",
 };
