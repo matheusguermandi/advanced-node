@@ -27,7 +27,7 @@ describe("User Routes", () => {
       backup.restore();
     });
 
-    it("should return 403 if no authorization header is present", async () => {
+    it("should return 403 if authorization header is not present", async () => {
       const { status } = await request(app).delete("/api/users/picture");
 
       expect(status).toBe(403);
