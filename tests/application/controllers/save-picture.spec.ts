@@ -32,7 +32,7 @@ describe("SavePictureController", () => {
     expect(sut).toBeInstanceOf(Controller);
   });
 
-  it("should build Validators correctly", async () => {
+  it("should build Validators correctly on save", async () => {
     const validators = sut.buildValidators({ file, userId });
 
     expect(validators).toEqual([
@@ -43,13 +43,16 @@ describe("SavePictureController", () => {
     ]);
   });
 
+  it("should build Validators correctly on delete", async () => {
+    const validators = sut.buildValidators({ file: undefined, userId });
+
+    expect(validators).toEqual([]);
+  });
+
   it("should call ChangeProfilePicture with correct input", async () => {
     await sut.handle({ file, userId });
 
-    expect(changeProfilePicture).toHaveBeenCalledWith({
-      id: userId,
-      file,
-    });
+    expect(changeProfilePicture).toHaveBeenCalledWith({ id: userId, file });
     expect(changeProfilePicture).toHaveBeenCalledTimes(1);
   });
 
