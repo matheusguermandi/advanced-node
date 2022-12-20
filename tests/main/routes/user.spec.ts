@@ -9,24 +9,24 @@ import { sign } from "jsonwebtoken";
 import request from "supertest";
 
 describe("User Routes", () => {
+  let backup: IBackup;
+  let pgUserRepo: Repository<PgUser>;
+
+  beforeAll(async () => {
+    const db = await makeFakeDb([PgUser]);
+    backup = db.backup();
+    pgUserRepo = getRepository(PgUser);
+  });
+
+  afterAll(async () => {
+    await getConnection().close();
+  });
+
+  beforeEach(() => {
+    backup.restore();
+  });
+
   describe("DELETE /users/picture", () => {
-    let backup: IBackup;
-    let pgUserRepo: Repository<PgUser>;
-
-    beforeAll(async () => {
-      const db = await makeFakeDb([PgUser]);
-      backup = db.backup();
-      pgUserRepo = getRepository(PgUser);
-    });
-
-    afterAll(async () => {
-      await getConnection().close();
-    });
-
-    beforeEach(() => {
-      backup.restore();
-    });
-
     it("should return 403 if authorization header is not present", async () => {
       const { status } = await request(app).delete("/api/users/picture");
 
@@ -36,7 +36,7 @@ describe("User Routes", () => {
     it("should return 200 with valid data", async () => {
       const { id } = await pgUserRepo.save({
         email: "any_email",
-        name: "Any Name",
+        name: "any name",
       });
       const authorization = sign({ key: id }, env.jwtSecret);
 
@@ -46,6 +46,14 @@ describe("User Routes", () => {
 
       expect(status).toBe(200);
       expect(body).toEqual({ pictureUrl: undefined, initials: "AN" });
+    });
+  });
+
+  describe("PUT /users/picture", () => {
+    it("should return 403 if authorization header is not present", async () => {
+      const { status } = await request(app).put("/api/users/picture");
+
+      expect(status).toBe(403);
     });
   });
 });
