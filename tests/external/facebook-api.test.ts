@@ -19,8 +19,8 @@ describe("Facebook Api Integration Tests", () => {
 
     expect(fbUser).toEqual({
       facebookId: "728079287908964",
-      email: "mango_pgftrsp_dev@tfbnw.net",
-      name: "Mango Dev",
+      email: "email@test.net",
+      name: "Name test",
     });
   });
 
