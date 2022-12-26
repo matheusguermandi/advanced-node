@@ -1,3 +1,4 @@
+import { DbTransaction } from "@/application/contracts";
 import {
   ConnectionNotFoundError,
   TransactionNotFoundError,
@@ -15,7 +16,7 @@ import {
   ObjectLiteral,
 } from "typeorm";
 
-export class PgConnection {
+export class PgConnection implements DbTransaction {
   private static instance?: PgConnection;
   private query?: QueryRunner;
   private connection?: Connection;
