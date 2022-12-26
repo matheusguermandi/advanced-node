@@ -4,6 +4,7 @@ import {
   ValidationBuilder as Builder,
   Validator,
 } from "@/application/validation";
+import { AuthenticationError } from "@/domain/entities";
 import { FacebookAuthentication } from "@/domain/use-cases";
 
 type HttpRequest = { token: string };
@@ -18,8 +19,9 @@ export class FacebookLoginController extends Controller {
     try {
       const accessToken = await this.facebookAuthentication({ token });
       return ok(accessToken);
-    } catch {
-      return unauthorized();
+    } catch (error) {
+      if (error instanceof AuthenticationError) return unauthorized();
+      throw error;
     }
   }
 
