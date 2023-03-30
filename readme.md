@@ -1,8 +1,8 @@
 # **Advanced Node project**
 
-O objetivo do projeto é montar uma API com uma arquitetura bem definida e desacoplada, utilizando TDD (programação orientada a testes) como metodologia de trabalho, Clean Architecture para fazer a distribuição de responsabilidades em camadas, sempre seguindo os princípios do SOLID e, sempre que possível, aplicando Design Patterns para resolver alguns problemas comuns.
+The objective of the project is to build an API with a well-defined and decoupled architecture, using TDD (test-oriented programming) as a work methodology, Clean Architecture to distribute responsibilities in layers, always following the principles of SOLID and, whenever possible by applying Design Patterns to solve some common problems.
 
-> ## Princípios
+> ## Principles
 
 - Single Responsibility
 - Open Closed
@@ -50,7 +50,7 @@ O objetivo do projeto é montar uma API com uma arquitetura bem definida e desac
 - Shotgun Surgery
 - Speculative Generality
 
-> ## Metodologias e Designs
+> ## Methodologies e Designs
 
 - TDD
 - Clean Architecture
@@ -62,7 +62,7 @@ O objetivo do projeto é montar uma API com uma arquitetura bem definida e desac
 - Use Cases
 - Spike (Agile)
 
-> ## Bibliotecas e Ferramentas
+> ## Libs and tools
 
 - NPM
 - Typescript
@@ -93,25 +93,35 @@ O objetivo do projeto é montar uma API com uma arquitetura bem definida e desac
 - DotEnv
 - Ts-Node-Dev
 
-> ## Features do Typescript
+> ## Typescript Features
 
-- POO Avançado
+- Advanced POO
 - Strict Mode
 - Interface
 - TypeAlias
 - Namespace
 - Utility Types
-- Modularização de Paths
-- Configurações
+- Paths Modularization
+- Configurations
 - Build
 
-> ## Features de Testes
+> ## Test Features
 
-- Testes Unitários
-- Testes de Integração
-- Cobertura de Testes
+- Unit tests
+- Integration tests
+- Tess coverage
 - Test Doubles
 - Mocks
 - Stubs
 - Spies
 - Fakes
+
+> ## Use cases
+
+#### Facebook authentication
+
+!["facebook-authentication"](./documentation/facebook-authentication/facebook-authentication.png)
+
+#### Change profile picture
+
+!["change-profile-picture"](./documentation/change-profile-picture/change-profile-picture.png)
